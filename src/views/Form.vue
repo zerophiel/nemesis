@@ -12,100 +12,86 @@
       >
         <form>
           <v-text-field
-              v-model="name"
-              label="Name"
+              v-model="id_anggaran"
+              label="ID Angaran"
               required
           ></v-text-field>
           <v-text-field
-              v-model="number"
-              label="Number"
+              v-model="id_opd"
+              label="ID OPD"
+              required
+          ></v-text-field>
+          <v-text-field
+              v-model="jns_instansi"
+              label="Jenis Instansi"
+              required
+          ></v-text-field>
+          <v-text-field
+              v-model="kd_urusan"
+              label="KD Urusan"
+          ></v-text-field>
+          <v-text-field
+              v-model="kd_bidurusan"
+              label="KD Bidang Urusan"
+          ></v-text-field>
+          <v-text-field
+              v-model="kd_program"
+              label="KD Program"
+          ></v-text-field>
+          <v-text-field
+              v-model="kd_kegiatan"
+              label="KD Kegiatan"
+          ></v-text-field>
+          <v-text-field
+              v-model="kd_subkegiatan"
+              label="KD Sub Kegiatan"
+          ></v-text-field>
+          <v-text-field
+              v-model="id_fungsi"
+              label="ID Fungsi"
+          ></v-text-field>
+          <v-text-field
+              v-model="uraian"
+              label="Uraian"
+          ></v-text-field>
+          <v-text-field
+              v-model="hd_anggaran"
+              label="HD Anggaran"
+          ></v-text-field>
+          <v-text-field
+              v-model="clevel"
+              label="Clevel"
+          ></v-text-field>
+          <v-text-field
+              v-model="hd"
+              label="HD"
+          ></v-text-field>
+          <v-text-field
+              v-model="id_rencana"
+              label="ID Rencana"
+          ></v-text-field>
+          <v-text-field
+              v-model="nilai"
+              label="Nilai"
               type="number"
-              required
           ></v-text-field>
           <v-text-field
-              v-model="name"
-              label="Name"
-              required
+              v-model="nilai_ubah"
+              label="Nilai Ubah"
+              type="number"
           ></v-text-field>
           <v-text-field
-              v-model="name"
-              label="Name"
-              required
+              v-model="realisasi"
+              label="Realisasi"
+              type="number"
           ></v-text-field>
           <v-text-field
-              v-model="name"
-              label="Name"
-              required
+              v-model="tu_capai"
+              label="TU Capai"
           ></v-text-field>
           <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
-          ></v-text-field>
-          <v-text-field
-              v-model="name"
-              label="Name"
-              required
+              v-model="tk_capai"
+              label="TK Capai"
           ></v-text-field>
 
 
@@ -153,9 +139,9 @@ export default {
     clevel: "",
     hd: "",
     id_rencana: "",
-    nilai: "",
-    nilai_ubah: "",
-    realisasi: "",
+    nilai: "0",
+    nilai_ubah: "0",
+    realisasi: "0",
     tu_capai: "",
     tk_capai: "",
     snackbar:false,
@@ -186,29 +172,11 @@ export default {
         tu_capai: this.tu_capai,
         tk_capai: this.tk_capai
       }
-      this.$http.post(process.env.VUE_APP_ALICE + "/create",postData)
+      this.$http.post(process.env.VUE_APP_ALICE,postData)
           .then(response => {
             this.snackbarText=response.data.message
             this.snackbar=true
-            this.id_anggaran= ""
-            this.id_opd= ""
-            this.jns_instansi= ""
-            this.kd_urusan= ""
-            this.kd_bidurusan=""
-            this.kd_program= ""
-            this.kd_kegiatan= ""
-            this.kd_subkegiatan= ""
-            this.id_fungsi= ""
-            this.uraian= ""
-            this.hd_anggaran= ""
-            this.clevel= ""
-            this.hd= ""
-            this.id_rencana= ""
-            this.nilai= ""
-            this.nilai_ubah= ""
-            this.realisasi= ""
-            this.tu_capai= ""
-            this.tk_capai= ""
+            this.clear()
           })
           .catch(response => {
             this.snackbarText=response.data.message
